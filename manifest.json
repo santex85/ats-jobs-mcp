@@ -1,0 +1,70 @@
+{
+  "manifest_version": "0.4",
+  "name": "ats-jobs-mcp",
+  "display_name": "ATS Jobs (Greenhouse, Lever, Ashby)",
+  "version": "0.1.0",
+  "description": "Open job postings from Greenhouse, Lever and Ashby public job boards in one unified schema.",
+  "long_description": "Live access to open job postings from any company hiring through Greenhouse, Lever or Ashby, read from the platforms' official public no-auth job-board APIs. Multi-company job search, full board listings, job details and ATS detection, with salary ranges when the employer publishes them. No API key needed.",
+  "author": {
+    "name": "santex85",
+    "url": "https://github.com/santex85"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/santex85/ats-jobs-mcp"
+  },
+  "homepage": "https://github.com/santex85/ats-jobs-mcp",
+  "support": "https://github.com/santex85/ats-jobs-mcp/issues",
+  "license": "MIT",
+  "keywords": [
+    "jobs",
+    "greenhouse",
+    "lever",
+    "ashby",
+    "recruiting"
+  ],
+  "server": {
+    "type": "uv",
+    "entry_point": "src/server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "${__dirname}",
+        "src/server.py"
+      ],
+      "env": {
+        "MCP_TRANSPORT": "stdio"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "search_jobs",
+      "description": "Search open jobs across up to 20 companies that hire via Greenhouse, Lever or Ashby."
+    },
+    {
+      "name": "list_company_jobs",
+      "description": "List all open jobs of one company (compact: no descriptions), newest first, plus department counts."
+    },
+    {
+      "name": "get_job",
+      "description": "Full details of one job posting, including the complete description as plain text."
+    },
+    {
+      "name": "detect_ats",
+      "description": "Find which ATS (Greenhouse, Lever, Ashby) a company uses and its board slug."
+    }
+  ],
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "linux",
+      "win32"
+    ],
+    "runtimes": {
+      "python": ">=3.10"
+    }
+  }
+}
