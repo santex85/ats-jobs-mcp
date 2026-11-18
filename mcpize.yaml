@@ -1,0 +1,10 @@
+version: 1
+name: ats-jobs-mcp
+description: Search open jobs on Greenhouse, Lever and Ashby public job boards - multi-company job search, full board listings, job details and ATS detection.
+runtime: python
+entry: src/server.py
+build:
+  install: python -m venv .venv && .venv/bin/pip install --no-cache-dir -r requirements.txt
+startCommand:
+  type: http
+  command: .venv/bin/python src/server.py
